@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Enemy = function(posX, posY, GameSpeed) {
+var Enemy = function(posX, posY, gameSpeed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x = posX;
@@ -60,9 +60,18 @@ Player.prototype.handleInput = function(allowedKeys) {
     }
 };
 
+Player.prototype.reset = function() {
+    this.x = StartHereX;
+    this.y = StartHereY;
+};
+
 // Now instantiate your objects.
+var enemy1 = new Enemy();
+var enemy2 = new Enemy();
+var enemy3 = new Enemy();
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
+allEnemies.push(enemy1, enemy2, enemy3);
 // Place the player object in a variable called player
 var player = new Player();
 
