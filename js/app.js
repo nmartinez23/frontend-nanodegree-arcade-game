@@ -19,7 +19,7 @@ Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
         if(this.x > 600) {
             this.x = 0;
-        };
+        }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -37,8 +37,18 @@ var Player = function (posX, posY) {
 };
 
 Player.prototype.update = function() {
-    this.x = this.x;
-    this.y = this.y;
+    if(this.x < 0) {
+        this.x = 0;
+    } else if(this.x > 400) {
+        this.x = 400;
+    } else if(this.y === 0) {
+        this.y = 400;
+    } else if(this.y < 0) {
+        this.y = 0;
+        alert("YOU WIN! TRY AGAIN!");
+    } else if(this.y > 400) {
+        this.y = 400;
+    }
 };
 
 Player.prototype.render = function() {
@@ -50,7 +60,7 @@ Player.prototype.handleInput = function(allowedKeys) {
         case 'up':
             this.y = this.y - 85;
             break;
-        
+
         case 'down':
             this.y = this.y + 85;
             break;
@@ -61,7 +71,17 @@ Player.prototype.handleInput = function(allowedKeys) {
 
         case 'left':
             this.x = this.x - 100;
-            break; 
+            break;
+    }
+};
+
+var checkCollisions = function() {
+   for (var i = 0; i < allEnemies.length; i++) {
+        if (player.x + 60 >= allEnemies[i].x && player.x <= allEnemies[i].x + 75 &&
+            player.y + 45 >= allEnemies[i].y && player.y <= allEnemies[i].y + 35) {
+            alert("Oh the bug got you! Game Over!");
+            player.reset();
+        }
     }
 };
 
@@ -73,7 +93,6 @@ Player.prototype.reset = function() {
     this.y = startHereY;
 };
 
-
 // Now instantiate your objects.
 var enemy1 = new Enemy(0,60,160);
 var enemy2 = new Enemy(0,143,300);
@@ -81,17 +100,7 @@ var enemy3 = new Enemy(0,225,200);
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [enemy1, enemy2, enemy3];
 // Place the player object in a variable called player
-var player = new Player();
-
-
-Player.prototype.checkCollisions = function() {
-    for(i=0; i < allEnemies.length; i++) {
-        if(this.x === allEnemies[i].x && this.y === allEnemies[i].y) {
-            player.reset();
-        };
-    };
-};
-
+var player = new Player(startHereX,startHereY);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
