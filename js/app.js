@@ -82,8 +82,8 @@ Player.prototype.handleInput = function(allowedKeys) {
 // If there is a collision, the game is over and the player resets to the beginning.
 var checkCollisions = function() {
    for (var i = 0; i < allEnemies.length; i++) {
-        if (player.x + 60 >= allEnemies[i].x && player.x <= allEnemies[i].x + 75 &&
-            player.y + 45 >= allEnemies[i].y && player.y <= allEnemies[i].y + 35) {
+        if (player.x + 60 >= allEnemies[i].x && player.x <= allEnemies[i].x + 60 &&
+            player.y + 45 >= allEnemies[i].y && player.y <= allEnemies[i].y + 45) {
             alert("Oh the bug got you! Game Over!");
             player.reset();
         }
@@ -100,7 +100,7 @@ Player.prototype.reset = function() {
 };
 
 // Now instantiate your objects.
-var enemy1 = new Enemy(0,60,160);
+var enemy1 = new Enemy(0,60,360);
 var enemy2 = new Enemy(0,143,300);
 var enemy3 = new Enemy(0,225,200);
 // Place all enemy objects in an array called allEnemies
