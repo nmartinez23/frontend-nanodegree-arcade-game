@@ -1,10 +1,10 @@
-Froggerish! Udacity Arcade Game Project
+<h1>Froggerish! Udacity Arcade Game Project</h1>
 
 This game is based on the classic game Frogger and is a project I completed while completing my Udacity Front End Developer Nanodegree.
 
-This game was built with Javascript, CSS and HTML.
+This game was built with Javascript, CSS, HTML and love.
 
-Game Play
+<h1>Game Play</h1>
 
 You can clone, fork and simply download the Zip file to your local environment. The main functionality is in the JS directory with app.js, engine.js and resources.js.  To display and play Froggerish, open the index.html file.
 
