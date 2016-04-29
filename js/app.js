@@ -1,7 +1,6 @@
 // Enemies our player must avoid
 var Enemy = function(posX, posY, gameSpeed) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
+    // posX and posY variables to instantiate the location of each of the enemies.
     this.x = posX;
     this.y = posY;
     this.speed = gameSpeed;
@@ -15,7 +14,7 @@ var Enemy = function(posX, posY, gameSpeed) {
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
-    // all computers.
+    // all computers. Check enemy position to update and keep looping.
     this.x += this.speed * dt;
         if(this.x > 600) {
             this.x = 0;
@@ -36,6 +35,8 @@ var Player = function (posX, posY) {
     this.sprite = 'images/char-boy.png';
 };
 
+// Check player position to update and keep player on the board.
+// Alert user when player gets to water for the win.
 Player.prototype.update = function() {
     if(this.x < 0) {
         this.x = 0;
@@ -51,10 +52,12 @@ Player.prototype.update = function() {
     }
 };
 
+// Draw player on the board, required method for the game.
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+// Player movements are controlled by the user with the following keystrokes.
 Player.prototype.handleInput = function(allowedKeys) {
     switch (allowedKeys) {
         case 'up':
@@ -75,6 +78,8 @@ Player.prototype.handleInput = function(allowedKeys) {
     }
 };
 
+// This function will check player and enemy positions to detect collisions.
+// If there is a collision, the game is over and the player resets to the beginning.
 var checkCollisions = function() {
    for (var i = 0; i < allEnemies.length; i++) {
         if (player.x + 60 >= allEnemies[i].x && player.x <= allEnemies[i].x + 75 &&
@@ -88,6 +93,7 @@ var checkCollisions = function() {
 var startHereX = 200;
 var startHereY = 400;
 
+// This resets the player when there is a collision or when the player wins.
 Player.prototype.reset = function() {
     this.x = startHereX;
     this.y = startHereY;
