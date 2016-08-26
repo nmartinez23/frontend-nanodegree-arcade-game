@@ -1,8 +1,6 @@
 #Froggerish! Udacity Arcade Game Project
 
-This game is based on the classic game Frogger and is a project I completed while completing my Udacity Front End Developer Nanodegree.
-
-This game was built with Javascript, CSS, HTML and love.
+This game is based on the classic game Frogger and is a project I completed while completing my Udacity Front End Developer Nanodegree. This game was built with Javascript, CSS, HTML and love.
 
 ##Game Play
 
